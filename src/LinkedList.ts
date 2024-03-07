@@ -2,9 +2,10 @@ import Node from './Node';
 export default class LinkedList {
   value: number;
   size: number;
-  next: object;
+
   head: any;
-  tail: any;
+
+  tail: object;
   index: 0;
   constructor(value: number) {
     this.head = { value: value, next: null };
@@ -14,32 +15,44 @@ export default class LinkedList {
 
   append(value: number) {
     const node = new Node(value);
+
     this.tail = node;
+
     let current = this.head;
-    while (current.next !== null) {
-      current = current.next;
+
+    if (current.next !== null) {
+      while (current.next !== null) {
+        current = current.next;
+      }
     }
     current.next = node;
     this.size++;
-    return this; //allow chaining
   }
-
+  // reset() {
+  //   // how to reset a linkedList?
+  //   console.log(this);
+  // }
   prepend(value: number) {
     const node = new Node(value);
     const headCopy = this.head;
     this.head = node;
     this.head.next = headCopy;
     this.size++;
-    return this; // allow chaining
   }
   getSize() {
+    //count how many values inside nested linkedList
+    // here we are -> need to store some properties in the list
+    // returns the total number of nodes in the list
+
     return this.size;
   }
   getHead() {
+    // returns the first node in the list
     return this.head;
   }
   getTail() {
     return this.tail;
+    // returns the last node in the list
   }
   at(index: number) {
     //returns the node at the given index
@@ -49,12 +62,12 @@ export default class LinkedList {
     // index[3] = head.next.next.next (3steps in)
     // -> using while loop. every time i hear transver -> using loop
     // sample 1 for...loop
-    let copy = this.head;
-    for (let i = 0; i <= index; i++) {
-      copy = copy.next;
-      console.log(copy);
-    }
+    // let copy = this.head;
+    // for (let i = 0; i <= index; i++) {
+    //   copy = copy.next;
+    // console.log(copy);
   }
+
   pop() {
     //removes the last element from the list
   }
