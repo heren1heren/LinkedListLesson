@@ -1,30 +1,76 @@
+import Node from './Node';
 export default class LinkedList {
-  // do I need to have any properties in this LinkedList?
-  // constructor?
+  value: number;
+  size: number;
+  next: object;
+  head: object;
+  tail: object;
+  index: 0;
+  constructor(value: number) {
+    this.head = { value: value, next: null };
+    this.tail = this.head;
+    this.size = 1;
+  }
 
   append(value: number) {
-    // adds a new node containing value to the end of the list
-  }
+    const node = new Node(value);
+    const tailCopy = this.tail;
 
-  prepend(value: number) {
-    //adds a new node containing value to the start of the list
+    this.tail = node;
+    this.head.next = tailCopy;
+    this.size++;
+
+    // let current = this;
+
+    // if (current.next !== null) {
+    //   while (current.next !== null) {
+    //     current = current.next;
+    //   }
+    //   current.next = node;
+    // } else {
+    //   this.next = node;
+    // }
   }
-  get size() {
+  // reset() {
+  //   // how to reset a linkedList?
+  //   console.log(this);
+  // }
+  prepend(value: number) {
+    const node = new Node(value);
+    const headCopy = this.head;
+    this.head = node;
+    this.head.next = headCopy;
+    this.size++;
+  }
+  getSize() {
+    //count how many values inside nested linkedList
     // here we are -> need to store some properties in the list
     // returns the total number of nodes in the list
-    return;
+
+    return this.size;
   }
-  get head() {
+  getHead() {
     // returns the first node in the list
-    return;
+    return this.head;
   }
-  get tail() {
+  getTail() {
+    return this.tail;
     // returns the last node in the list
-    return;
   }
   at(index: number) {
     //returns the node at the given index
+    // first element index = 0;
+    // based on head and move deep on
+    // index[0] = head
+    // index[3] = head.next.next.next (3steps in)
+    // -> using while loop. every time i hear transver -> using loop
+    // sample 1 for...loop
+    // let copy = this.head;
+    // for (let i = 0; i <= index; i++) {
+    //   copy = copy.next;
+    // console.log(copy);
   }
+
   pop() {
     //removes the last element from the list
   }

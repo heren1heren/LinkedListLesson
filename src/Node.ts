@@ -1,8 +1,12 @@
 export default class Node {
   value: number;
-  nextNode: object;
+  next: object;
   constructor(value: number) {
     this.value = value;
-    this.nextNode = null;
+    this.next = null;
+  }
+
+  getNext() {
+    return this.next;
   }
 }

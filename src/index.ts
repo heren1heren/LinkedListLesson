@@ -5,7 +5,24 @@ import LinkedList from './LinkedList';
 
 // look back class and factory syntax a little bit
 //using inheritance to extend class Person to class solfWarddeveloper
-let node1 = new Node(35);
-let node2 = new Node(333);
-node1.nextNode = node2;
-console.log(node1);
+const linkedList = new LinkedList(1);
+linkedList.append(2);
+linkedList.append(3);
+linkedList.append(4);
+linkedList.append(5);
+linkedList.append(6);
+console.log(linkedList);
+
+linkedList.at(2); // return 3
+// console.log(linkedList);
+// linkedList.prepend(55);
+// let draft = {
+//   value: 35,
+//   next: {
+//     value: 34,
+//     next: {
+//       value: 33,
+//       next: null,
+//     },
+//   },
+// };
