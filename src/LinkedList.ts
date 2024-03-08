@@ -147,55 +147,8 @@ export default class LinkedList {
    consider how it will affect the existing nodes. 
   Some of the nodes will need their nextNode link updated.
   */
-  // insertAt(value: number | string, index: number) {
-  //   //that inserts a new node with the provided value at the given index
-  //   /**
-  //    * copying firstHalf and second Half of the original  this.head
-  //    * by looping
-  //    *
-  //    * create a new node
-  //    * linking new node to the first Half (current = node)
-  //    *
-  //    * new node.next = second Half
-  //    */
 
-  //   // const node = new Node(value);
-
-  //   // start copying secondHalf
-  //   let current = this.head;
-  //   const secondHalf = new Node(null);
-  //   let current1 = secondHalf;
-  //   for (let i = 1; i <= this.size - 1; i++) {
-  //     current = current.next;
-  //     if (i > index) {
-  //       if (secondHalf.value === null) {
-  //         secondHalf.value = current.value;
-  //       } else {
-  //         const node = new Node(current.value);
-  //         current1.next = node;
-  //         //transverse and assigning each value and next to secondHalf.
-  //         current1 = current1.next;
-  //       }
-  //     }
-  //   }
-  //   console.log(secondHalf);
-  //   let i = 0;
-  //   while (i < index && current.next !== null) {
-  //     i++;
-  //     current = current.next;
-  //   }
-  //   const node = new Node(value);
-  //   current.next = node;
-  //   console.log(current.next);
-
-  //   current.next.next = secondHalf;
-  //   console.log(current);
-  // }
   insertAt(value: number | string, index: number) {
-    // if (index >= this.size || index < 0) {
-    //   throw new Error('Index out of bounds');
-    // }
-
     const newNode = new Node(value);
     if (index === 0) {
       this.prepend(value);
@@ -204,12 +157,22 @@ export default class LinkedList {
       for (let i = 0; i < index - 1; i++) {
         current = current.next;
       }
-      newNode.next = current.next;
+      newNode.next = current.next; // copying current.next inside newNode.next
       current.next = newNode;
       this.size++;
     }
   }
   removeAt(index: number) {
     //that removes the node at the given index.
+    //transversing to  node{index-1}
+    let current = this.head;
+    for (let i = 1; i < index; i++) {
+      current = current.next;
+    }
+    const copy = current.next.next;
+    console.log(copy);
+    current.next = copy;
+    console.log(current);
+    this.size--;
   }
 }
